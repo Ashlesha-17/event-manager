@@ -1,0 +1,179 @@
+/* ========================= ROOT VARIABLES ========================= */
+:root {
+  --primary: #6c63ff;
+  --primary-dark: #5848e5;
+  --bg: #f5f7fa;
+  --text-dark: #2b2b2b;
+  --text-muted: #666;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-shadow: rgba(0, 0, 0, 0.12);
+}
+
+/* ========================= CONTAINER ========================= */
+.joined-events-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background: var(--bg);
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
+  border-radius: 20px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.08);
+}
+
+/* ========================= TITLE ========================= */
+.joined-events-container h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* ========================= SEARCH INPUT ========================= */
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 20px auto;
+  display: block;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: border 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* ========================= CARDS GRID ========================= */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+  gap: 24px;
+}
+
+/* ========================= EVENT CARD ========================= */
+.event-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 22px 24px;
+  box-shadow: 0 8px 20px var(--card-shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.event-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.18);
+}
+
+.event-card h3 {
+  margin-bottom: 12px;
+  color: var(--primary-dark);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.event-card p {
+  margin: 4px 0;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+}
+
+.event-card p strong {
+  color: var(--primary-dark);
+}
+
+/* ========================= CANCEL BUTTON ========================= */
+.cancel-join-button {
+  align-self: flex-start;
+  margin-top: 12px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+}
+
+.cancel-join-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+}
+
+.cancel-join-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* ========================= EMPTY STATE ========================= */
+.empty-text {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1rem;
+  padding: 20px 0;
+}
+
+/* ========================= RESPONSIVE ========================= */
+@media (max-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+  }
+}
+
+@media (max-width: 768px) {
+  .cards-grid {
+    grid-template-columns: 1fr; /* 1 card per row on tablet/mobile */
+  }
+
+  .joined-events-container h2 {
+    font-size: 1.9rem;
+  }
+
+  .event-card {
+    padding: 18px 20px;
+  }
+
+  .event-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .cancel-join-button {
+    padding: 9px 18px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .joined-events-container {
+    padding: 30px 15px;
+  }
+
+  .joined-events-container h2 {
+    font-size: 1.7rem;
+  }
+
+  .event-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .cancel-join-button {
+    width: 100%;
+    text-align: center;
+  }
+}

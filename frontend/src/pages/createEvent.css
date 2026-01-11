@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@700&family=Poppins:wght@600&display=swap');
+
+/* ---------------- Page Wrapper ---------------- */
+.create-event {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  gap: 30px;
+  
+  background: url('../assets/create.png') no-repeat center center;
+  background-size: cover;
+
+  font-family: 'Roboto', sans-serif;
+  color: white;
+
+  animation: fadeIn 1s ease-in-out forwards;
+  overflow-x: hidden;
+}
+
+/* ---------------- Heading ---------------- */
+.create-event h2 {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+
+  color: #255453; /* original white */
+  font-size: 34px;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;
+  text-shadow: 0 6px 15px rgba(0, 0, 0, 0.45);
+
+  animation: slideDown 1s ease forwards;
+}
+
+/* ---------------- Subtitle ---------------- */
+.event-subtitle {
+  position: absolute;
+  top: 75px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #255453; /* original white with opacity */
+  font-size: 20px;
+  font-family: 'Dancing Script', cursive;
+  letter-spacing: 2px;
+  animation: fadeIn 1.4s ease forwards;
+}
+
+/* ---------------- Layout: Form + Action Buttons ---------------- */
+.create-event form,
+.event-actions {
+  background: #a85c5c; /* keep original white */
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Horizontal positioning */
+.create-event form {
+  width: 420px;
+  padding: 40px;
+  position: absolute;
+  top: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+/* ---------------- Form Inputs ---------------- */
+.create-event input,
+.create-event textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc; /* keep original */
+  font-size: 14px;
+  outline: none;
+}
+
+.create-event textarea {
+  resize: none;
+  height: 90px;
+}
+
+.create-event input:focus,
+.create-event textarea:focus {
+  border-color: #d039e4; /* original focus blue */
+}
+
+/* ---------------- Primary Button ---------------- */
+.create-event button {
+  width: 100%;
+  padding: 12px;
+  background: #986bd2; /* original blue */
+  color: #fff;         /* original white */
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.create-event button:hover {
+  background: #73e18e; /* original hover darker blue */
+}
+
+
+/* ---------------- Animations ---------------- */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -15px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.quit .btn3 {
+  padding: 12px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 30px;
+  border: 2px solid #e74c3c;
+  background: transparent;
+  color: #e74c3c;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.quit .btn3:hover {
+  background: #e74c3c;
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(231, 76, 60, 0.3);
+}
+
+.quit .btn3:active {
+  transform: scale(0.97);
+}
+
+.quit .btn3:focus {
+  outline: none;
+}
+
+.quit .btn3 {
+  width: 100%;
+}
+
+.quit {
+  position: absolute;
+  right: 8%;
+  top: calc(160px + 300px); /* below event-actions */
+  width: 300px;
+  display: flex;
+  justify-content: center;
+}

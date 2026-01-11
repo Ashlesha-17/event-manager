@@ -1,0 +1,223 @@
+/* ================= GOOGLE FONTS ================= */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@700&family=Poppins:wght@600&display=swap');
+
+/* ================= RESET ================= */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* ================= HOME SECTION ================= */
+#home {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 28px;
+
+  height: 100vh;
+  width: 100vw;
+
+  background: url('../assets/home.png') no-repeat center center;
+  background-size: cover;
+
+  font-family: 'Roboto', sans-serif;
+  color: white;
+
+  overflow: hidden;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+/* ================= OVERLAY ================= */
+#home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+/* Keep content above overlay */
+#home > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= TITLE ================= */
+#title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 0 14px rgba(0, 0, 0, 0.6);
+  animation: slideUp 1s ease forwards;
+}
+
+/* ================= DESCRIPTION ================= */
+.description {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.7rem;
+  letter-spacing: 1px;
+  opacity: 0;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+  animation: slideUp 1.2s ease forwards;
+  animation-delay: 0.4s;
+  margin-bottom: 40px;
+}
+
+/* ================= MAIN BUTTONS ================= */
+#home-buttons {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  justify-content: center;
+  opacity: 0;
+  animation: slideUp 1.4s ease forwards;
+  animation-delay: 0.9s;
+}
+
+#create,
+#join {
+  font-family: 'Poppins', sans-serif;
+  padding: 14px 32px;
+
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+
+  border: 1.8px solid rgba(255, 255, 255, 0.55);
+  border-radius: 14px;
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+  white-space: nowrap;
+}
+
+/* Hover */
+#create:hover,
+#join:hover {
+  background: rgba(255, 255, 255, 0.38);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* Active */
+#create:active,
+#join:active {
+  transform: translateY(0) scale(1);
+}
+
+/* ================= BOTTOM LEFT BUTTONS ================= */
+.bottom-buttons {
+  position: fixed !important;
+  bottom: 30px;
+  left: 30px;
+
+  display: flex;
+  flex-direction: column;   /* STACK */
+  gap: 20px;
+
+  z-index: 999;
+}
+
+.bottom-buttons .btn {
+  font-family: 'Poppins', sans-serif;
+  padding: 14px 30px;
+  width: 180px;
+
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+
+  border-radius: 30px;
+  border: 2px solid #d4a017;
+  background: #d4a017;
+  color: #090909;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Hover */
+.bottom-buttons .btn:hover {
+  background: transparent;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* Active */
+.bottom-buttons .btn:active {
+  transform: translateY(0);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 600px) {
+  #title {
+    font-size: 2.2rem;
+  }
+
+  .description {
+    font-size: 1.4rem;
+  }
+
+  #home-buttons {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  #create,
+  #join {
+    width: 80%;
+    max-width: 280px;
+    padding: 14px 0;
+    font-size: 0.95rem;
+  }
+
+  .bottom-buttons {
+    bottom: 20px;
+    left: 20px;
+    gap: 16px;
+  }
+
+  .bottom-buttons .btn {
+    width: 140px;
+    font-size: 14px;
+    padding: 12px 20px;
+  }
+}

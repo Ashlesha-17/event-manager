@@ -1,0 +1,83 @@
+.my-events-container {
+  width: 100vw;            /* full viewport width */
+  min-height: 100vh;       /* full viewport height */
+  padding: 40px 20px;      /* padding for breathing space */
+  background-color: #f9f5f0; /* full background color */
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;  /* stack heading and events */
+  align-items: center;     /* center content horizontally */
+}
+
+.my-events-container h1 {
+  margin-bottom: 30px;
+  color: #d4a017;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+/* Events grid */
+.my-events-container .events-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;  /* center the cards horizontally */
+  align-items: flex-start;  /* start from top */
+  gap: 20px;
+  width: 100%;             /* full width so container doesn’t shrink */
+  max-width: 1200px;       /* optional: limit width for large screens */
+}
+
+/* Event card */
+.my-events-container .event-card {
+  background: #fff4d1;
+  border: 2px solid #d4a017;
+  border-radius: 15px;
+  padding: 20px;
+  width: 250px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.my-events-container .event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.my-events-container .event-card h2 {
+  margin: 0 0 10px 0;
+  color: #2b2b2b;
+}
+
+.my-events-container .event-card p {
+  margin: 4px 0;
+  font-size: 0.95rem;
+  color: #2b2b2b;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .my-events-container h1 {
+    font-size: 2rem;
+  }
+  .my-events-container .events-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .my-events-container .event-card {
+    width: 90%;
+    max-width: 300px;
+  }
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 14px;
+  margin: 15px auto 25px;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
