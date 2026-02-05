@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./auth.css";
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 const Signup = () => {
   const navigate = useNavigate();
 
@@ -10,7 +12,7 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [contact, setContact] = useState("");
-  
+
   const handleSignup = async (e) => {
     e.preventDefault();
 
@@ -20,7 +22,7 @@ const Signup = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/signup", {
+      const res = await fetch(`${BACKEND_URL}/api/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, contact, email, password }),
@@ -32,10 +34,10 @@ const Signup = () => {
         localStorage.setItem("username", name);
         localStorage.setItem("email", email);
         localStorage.setItem("contact", contact);
-        alert(data.message);  // Signup successful
-        navigate("/home");        // Redirect to login
+        alert(data.message);
+        navigate("/home");
       } else {
-        alert(data.message);  // e.g., Email already in use
+        alert(data.message);
       }
     } catch (err) {
       console.error(err);

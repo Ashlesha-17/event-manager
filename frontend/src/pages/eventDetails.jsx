@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./eventDetails.css";
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 const EventDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -11,7 +13,7 @@ const EventDetails = () => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/events");
+        const res = await axios.get(`${BACKEND_URL}/api/events`);
         const found = res.data.find(ev => ev._id === id);
         setEvent(found);
       } catch (err) {
@@ -23,7 +25,7 @@ const EventDetails = () => {
 
   const cancelEvent = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/events/${id}`);
+      await axios.delete(`${BACKEND_URL}/api/events/${id}`);
       alert("Event canceled successfully!");
       navigate("/events");
     } catch (err) {
@@ -34,16 +36,14 @@ const EventDetails = () => {
   const approveUser = async (email) => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/events/approve",
+        `${BACKEND_URL}/api/events/approve`,
         {
           eventId: event._id,
           email
         }
       );
 
-      // update UI from backend response
       setEvent(res.data.event);
-
     } catch (err) {
       console.error("Error approving user:", err);
     }
@@ -54,10 +54,8 @@ const EventDetails = () => {
   return (
     <div className="event-details-container">
 
-      {/* ================= TITLE ================= */}
       <h1>{event.title}</h1>
 
-      {/* ================= EVENT INFO ================= */}
       <div className="event-info">
         <p><strong>Date:</strong> {event.date}</p>
         <p><strong>Time:</strong> {event.time}</p>
@@ -66,7 +64,6 @@ const EventDetails = () => {
         <p><strong>Join Code:</strong> {event.joinCode}</p>
       </div>
 
-      {/* ================= JOIN REQUESTS ================= */}
       <h2 className="section-title section-gap">Join Requests</h2>
 
       <div className="join-requests">
@@ -90,7 +87,6 @@ const EventDetails = () => {
         )}
       </div>
 
-      {/* ================= JOINED USERS ================= */}
       <h2 className="section-title section-gap">Joined Users</h2>
 
       {event.joinedUsers && event.joinedUsers.length > 0 ? (
@@ -116,7 +112,6 @@ const EventDetails = () => {
         <p className="no-users">No users joined yet.</p>
       )}
 
-      {/* ================= CANCEL BUTTON ================= */}
       <button className="cancel-btn" onClick={cancelEvent}>
         Cancel Event
       </button>

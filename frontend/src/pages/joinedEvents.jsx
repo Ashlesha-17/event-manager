@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./joinedEvents.css";
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 const JoinedEvents = () => {
   const email = localStorage.getItem("email");
 
@@ -13,7 +15,7 @@ const JoinedEvents = () => {
     const fetchJoinedEvents = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/events/joined/${email}`
+          `${BACKEND_URL}/api/events/joined/${email}`
         );
         setEvents(res.data);
       } catch (err) {
@@ -28,7 +30,7 @@ const JoinedEvents = () => {
 
   const handleCancelJoin = async (eventId) => {
     try {
-      await axios.post("http://localhost:5000/api/events/exit", {
+      await axios.post(`${BACKEND_URL}/api/events/exit`, {
         eventId,
         email,
       });
@@ -40,7 +42,6 @@ const JoinedEvents = () => {
     }
   };
 
-  // ✅ SEARCH FILTER
   const filteredEvents = events.filter(
     (event) =>
       event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -53,7 +54,6 @@ const JoinedEvents = () => {
     <div className="joined-events-container">
       <h2>My Joined Events</h2>
 
-      {/* 🔍 Search Input */}
       <input
         type="text"
         placeholder="Search by event name or join code"

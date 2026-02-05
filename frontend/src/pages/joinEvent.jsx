@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./joinEvent.css";
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 const JoinEvent = () => {
   const name = localStorage.getItem("username");
   const email = localStorage.getItem("email");
@@ -12,12 +14,12 @@ const JoinEvent = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // Fetch event details by code
   const fetchEventDetails = async (code) => {
     try {
-      const res = await axios.post("http://localhost:5000/api/events/preview", {
-        eventCode: code
-      });
+      const res = await axios.post(
+        `${BACKEND_URL}/api/events/preview`,
+        { eventCode: code }
+      );
 
       setEventDetails(res.data);
       setError("");
@@ -27,7 +29,6 @@ const JoinEvent = () => {
     }
   };
 
-  // Join event
   const handleJoin = async () => {
     if (!eventCode) {
       alert("Enter event code first!");
@@ -37,14 +38,17 @@ const JoinEvent = () => {
     try {
       setLoading(true);
 
-      const res = await axios.post("http://localhost:5000/api/events/join", {
-        eventCode,
-        name,
-        email,
-        contact
-      });
+      const res = await axios.post(
+        `${BACKEND_URL}/api/events/join`,
+        {
+          eventCode,
+          name,
+          email,
+          contact
+        }
+      );
 
-      alert(res.data.message || "Join request sent, wait for appoval!");
+      alert(res.data.message || "Join request sent, wait for approval!");
     } catch (err) {
       alert(err.response?.data?.message || "Unable to join event");
     } finally {
@@ -62,7 +66,6 @@ const JoinEvent = () => {
         value={eventCode}
         onChange={(e) => {
           setEventCode(e.target.value);
-          // Fetch preview when code length >= 4
           if (e.target.value.length >= 4) {
             fetchEventDetails(e.target.value);
           } else {
@@ -87,8 +90,8 @@ const JoinEvent = () => {
           </p>
 
           <p className="creator">
-            <strong>Created By:</strong> {eventDetails.creator?.name}<br/>
-            <strong>Email:</strong> {eventDetails.creator?.email}<br/>
+            <strong>Created By:</strong> {eventDetails.creator?.name}<br />
+            <strong>Email:</strong> {eventDetails.creator?.email}<br />
             <strong>Contact:</strong> {eventDetails.creator?.contact}
           </p>
 
