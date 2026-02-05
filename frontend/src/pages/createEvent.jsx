@@ -5,7 +5,7 @@ import "./createEvent.css";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const CreateEvent = () => {
-  const username = localStorage.getItem("username");
+//   const username = localStorage.getItem("username");
   const email = localStorage.getItem("email");
 
   const [eventData, setEventData] = useState({
