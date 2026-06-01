@@ -2,8 +2,7 @@
 
 A full-stack event management web application that allows users to create, join, and manage events. Built with React, Node.js, Express, and MongoDB.
 
-🌐 **Live Demo:** [event-manager-flame-alpha.vercel.app](https://event-manager-flame-alpha.vercel.app)
-
+🌐 **Live Demo:** https://event-manager-psi-liard.vercel.app
 ---
 
 ## ✨ Features
